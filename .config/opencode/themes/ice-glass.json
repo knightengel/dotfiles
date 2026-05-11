@@ -1,0 +1,228 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "deep": "#04131f",
+    "crust": "#020a11",
+    "surface": "#071d2f",
+    "surface2": "#12384f",
+    "surface3": "#154861",
+    "border": "#2c92c8",
+    "text": "#d8f4ff",
+    "muted": "#8fb6c9",
+    "subtle": "#4f7890",
+    "sky": "#5cc8ff",
+    "ice": "#9fe7f7",
+    "green": "#79cbbd",
+    "yellow": "#d9cb93",
+    "orange": "#d99a7a",
+    "red": "#d98aa0",
+    "purple": "#b4c5f3",
+    "pink": "#e7a0c4",
+    "none": "none"
+  },
+  "theme": {
+    "primary": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "secondary": {
+      "dark": "ice",
+      "light": "ice"
+    },
+    "accent": {
+      "dark": "purple",
+      "light": "purple"
+    },
+    "error": {
+      "dark": "red",
+      "light": "red"
+    },
+    "warning": {
+      "dark": "yellow",
+      "light": "yellow"
+    },
+    "success": {
+      "dark": "green",
+      "light": "green"
+    },
+    "info": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "text": {
+      "dark": "text",
+      "light": "text"
+    },
+    "textMuted": {
+      "dark": "muted",
+      "light": "muted"
+    },
+    "background": {
+      "dark": "none",
+      "light": "none"
+    },
+    "backgroundPanel": {
+      "dark": "surface",
+      "light": "surface"
+    },
+    "backgroundElement": {
+      "dark": "surface2",
+      "light": "surface2"
+    },
+    "border": {
+      "dark": "border",
+      "light": "border"
+    },
+    "borderActive": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "borderSubtle": {
+      "dark": "surface2",
+      "light": "surface2"
+    },
+
+    "diffAdded": {
+      "dark": "green",
+      "light": "green"
+    },
+    "diffRemoved": {
+      "dark": "red",
+      "light": "red"
+    },
+    "diffContext": {
+      "dark": "muted",
+      "light": "muted"
+    },
+    "diffHunkHeader": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "diffHighlightAdded": {
+      "dark": "green",
+      "light": "green"
+    },
+    "diffHighlightRemoved": {
+      "dark": "red",
+      "light": "red"
+    },
+    "diffAddedBg": {
+      "dark": "surface2",
+      "light": "surface2"
+    },
+    "diffRemovedBg": {
+      "dark": "#3a1c2a",
+      "light": "#3a1c2a"
+    },
+    "diffContextBg": {
+      "dark": "surface",
+      "light": "surface"
+    },
+    "diffLineNumber": {
+      "dark": "subtle",
+      "light": "subtle"
+    },
+    "diffAddedLineNumberBg": {
+      "dark": "surface2",
+      "light": "surface2"
+    },
+    "diffRemovedLineNumberBg": {
+      "dark": "#3a1c2a",
+      "light": "#3a1c2a"
+    },
+
+    "markdownText": {
+      "dark": "text",
+      "light": "text"
+    },
+    "markdownHeading": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "markdownLink": {
+      "dark": "ice",
+      "light": "ice"
+    },
+    "markdownLinkText": {
+      "dark": "purple",
+      "light": "purple"
+    },
+    "markdownCode": {
+      "dark": "green",
+      "light": "green"
+    },
+    "markdownBlockQuote": {
+      "dark": "muted",
+      "light": "muted"
+    },
+    "markdownEmph": {
+      "dark": "orange",
+      "light": "orange"
+    },
+    "markdownStrong": {
+      "dark": "yellow",
+      "light": "yellow"
+    },
+    "markdownHorizontalRule": {
+      "dark": "surface2",
+      "light": "surface2"
+    },
+    "markdownListItem": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "markdownListEnumeration": {
+      "dark": "ice",
+      "light": "ice"
+    },
+    "markdownImage": {
+      "dark": "purple",
+      "light": "purple"
+    },
+    "markdownImageText": {
+      "dark": "pink",
+      "light": "pink"
+    },
+    "markdownCodeBlock": {
+      "dark": "text",
+      "light": "text"
+    },
+
+    "syntaxComment": {
+      "dark": "muted",
+      "light": "muted"
+    },
+    "syntaxKeyword": {
+      "dark": "purple",
+      "light": "purple"
+    },
+    "syntaxFunction": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "syntaxVariable": {
+      "dark": "text",
+      "light": "text"
+    },
+    "syntaxString": {
+      "dark": "green",
+      "light": "green"
+    },
+    "syntaxNumber": {
+      "dark": "yellow",
+      "light": "yellow"
+    },
+    "syntaxType": {
+      "dark": "ice",
+      "light": "ice"
+    },
+    "syntaxOperator": {
+      "dark": "purple",
+      "light": "purple"
+    },
+    "syntaxPunctuation": {
+      "dark": "muted",
+      "light": "muted"
+    }
+  }
+}
