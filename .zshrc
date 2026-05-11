@@ -1,6 +1,6 @@
 # ─────────────────────────────────────────────────────────────
-# ~/.zshrc — Engel's clean power config
-# macOS + Ghostty + modern CLI tools
+# ~/.zshrc — Engel's Ice Glass Shell
+# Ghostty + Starship + AeroSpace + Neovim + modern CLI
 # ─────────────────────────────────────────────────────────────
 
 # ─────────────────────────────────────────────────────────────
@@ -9,30 +9,13 @@
 
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="less"
-export MANPAGER="sh -c 'col -bx | bat -l man -p 2>/dev/null || col -bx | less'"
 
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=100000
-SAVEHIST=100000
-
-setopt APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-setopt AUTO_CD
-setopt CORRECT
-setopt COMPLETE_IN_WORD
-setopt ALWAYS_TO_END
-setopt INTERACTIVE_COMMENTS
-
-unsetopt BEEP
+# Не показывать приветствие zsh
+export ZSH_DISABLE_COMPFIX=true
 
 # ─────────────────────────────────────────────────────────────
 # PATH
@@ -42,16 +25,16 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 # Homebrew Apple Silicon
-if [[ -d "/opt/homebrew/bin" ]]; then
+if [[ -x "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Homebrew Intel fallback
-if [[ -d "/usr/local/bin" ]]; then
-  export PATH="/usr/local/bin:$PATH"
+if [[ -x "/usr/local/bin/brew" ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-# Rust / Cargo
+# Cargo / Rust
 if [[ -d "$HOME/.cargo/bin" ]]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
@@ -75,6 +58,38 @@ if [[ -d "$HOME/Library/pnpm" ]]; then
 fi
 
 # ─────────────────────────────────────────────────────────────
+# History
+# ─────────────────────────────────────────────────────────────
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+
+# ─────────────────────────────────────────────────────────────
+# Zsh behavior
+# ─────────────────────────────────────────────────────────────
+
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt CORRECT
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
+setopt INTERACTIVE_COMMENTS
+setopt NO_BEEP
+
+unsetopt BEEP
+
+# ─────────────────────────────────────────────────────────────
 # Completion
 # ─────────────────────────────────────────────────────────────
 
@@ -82,10 +97,10 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
 zmodload zsh/complist
 
-# Быстрый compinit cache
-if [[ -n "$HOME/.zcompdump" ]]; then
+if [[ -f "$HOME/.zcompdump" ]]; then
   compinit -d "$HOME/.zcompdump"
 else
   compinit
@@ -97,53 +112,28 @@ fi
 
 bindkey -e
 
-# Ctrl + A / E
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
+bindkey '^W' backward-kill-word
+bindkey '^U' backward-kill-line
+bindkey '^K' kill-line
 
-# Ctrl + Left / Right, Option + Left / Right
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
+# Option + left/right
 bindkey '^[b' backward-word
 bindkey '^[f' forward-word
 
-# Delete word
-bindkey '^W' backward-kill-word
+# Ctrl + left/right
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
 # History search by prefix
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+
 bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
-
-# ─────────────────────────────────────────────────────────────
-# Better ls: eza fallback to ls
-# ─────────────────────────────────────────────────────────────
-
-if command -v eza >/dev/null 2>&1; then
-  alias ls='eza --group-directories-first'
-  alias l='eza -lah --group-directories-first'
-  alias ll='eza -lh --group-directories-first'
-  alias la='eza -lah --group-directories-first'
-  alias lt='eza --tree --level=2 --group-directories-first'
-  alias tree='eza --tree --group-directories-first'
-else
-  alias ls='ls -G'
-  alias l='ls -lah'
-  alias ll='ls -lh'
-  alias la='ls -lah'
-fi
-
-# ─────────────────────────────────────────────────────────────
-# Better cat: bat fallback to cat
-# ─────────────────────────────────────────────────────────────
-
-if command -v bat >/dev/null 2>&1; then
-  alias cat='bat --paging=never'
-  alias less='bat'
-fi
 
 # ─────────────────────────────────────────────────────────────
 # Core aliases
@@ -152,14 +142,19 @@ fi
 alias c='clear'
 alias q='exit'
 alias reload='source ~/.zshrc'
+
 alias zshrc='nvim ~/.zshrc'
-alias ghosttyrc='nvim ~/.config/ghostty/config.ghostty'
+alias dotzsh='nvim ~/dotfiles/zsh/.zshrc'
+alias ghosttyrc='nvim ~/dotfiles/ghostty/.config/ghostty/config.ghostty'
+alias starshiprc='nvim ~/dotfiles/starship/.config/starship.toml'
+alias nvimrc='nvim ~/dotfiles/nvim/.config/nvim'
+alias aerorc='nvim ~/dotfiles/aerospace/.aerospace.toml'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ~='cd ~'
-alias dot='cd ~/dotfiles 2>/dev/null || cd ~/.config'
+alias dot='cd ~/dotfiles'
 
 alias mkdir='mkdir -p'
 alias rm='rm -i'
@@ -178,7 +173,69 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false &
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 
 # ─────────────────────────────────────────────────────────────
-# Git aliases
+# Dotfiles / Stow
+# ─────────────────────────────────────────────────────────────
+
+alias stowall='cd ~/dotfiles && stow -R */'
+alias unstowall='cd ~/dotfiles && stow -D */'
+alias restow='cd ~/dotfiles && stow -R'
+
+# Быстрый restow конкретных конфигов
+alias stzsh='cd ~/dotfiles && stow -R zsh && source ~/.zshrc'
+alias stghost='cd ~/dotfiles && stow -R ghostty'
+alias stnvim='cd ~/dotfiles && stow -R nvim'
+alias ststar='cd ~/dotfiles && stow -R starship'
+alias staero='cd ~/dotfiles && stow -R aerospace && aerospace reload-config'
+
+# ─────────────────────────────────────────────────────────────
+# Better ls: eza
+# ─────────────────────────────────────────────────────────────
+
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --group-directories-first'
+  alias l='eza -lah --group-directories-first'
+  alias ll='eza -lh --group-directories-first'
+  alias la='eza -lah --group-directories-first'
+  alias lt='eza --tree --level=2 --group-directories-first'
+  alias tree='eza --tree --group-directories-first'
+else
+  alias ls='ls -G'
+  alias l='ls -lah'
+  alias ll='ls -lh'
+  alias la='ls -lah'
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Better cat: bat
+# ─────────────────────────────────────────────────────────────
+
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat --paging=never'
+  alias less='bat'
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+else
+  export MANPAGER="less"
+fi
+
+# ─────────────────────────────────────────────────────────────
+# ripgrep / fd
+# ─────────────────────────────────────────────────────────────
+
+export RIPGREP_CONFIG_PATH="$HOME/.config/rg/ripgreprc"
+
+if command -v rg >/dev/null 2>&1; then
+  alias grep='rg'
+  alias search='rg -n'
+  alias rgi='rg -i'
+  alias rgf='rg --files'
+fi
+
+if command -v fd >/dev/null 2>&1; then
+  alias find='fd'
+fi
+
+# ─────────────────────────────────────────────────────────────
+# Git
 # ─────────────────────────────────────────────────────────────
 
 alias g='git'
@@ -214,21 +271,6 @@ if command -v nvim >/dev/null 2>&1; then
 fi
 
 # ─────────────────────────────────────────────────────────────
-# Search tools
-# ─────────────────────────────────────────────────────────────
-
-export RIPGREP_CONFIG_PATH="$HOME/.config/rg/ripgreprc"
-
-if command -v rg >/dev/null 2>&1; then
-  alias grep='rg'
-  alias search='rg -n'
-fi
-
-if command -v fd >/dev/null 2>&1; then
-  alias find='fd'
-fi
-
-# ─────────────────────────────────────────────────────────────
 # fzf
 # ─────────────────────────────────────────────────────────────
 
@@ -247,17 +289,13 @@ export FZF_DEFAULT_OPTS="
   --color=border:#2c92c8
 "
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git --exclude node_modules'
-
 if command -v fd >/dev/null 2>&1; then
-  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules --exclude .next --exclude dist'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git --exclude node_modules --exclude .next --exclude dist'
 fi
 
 if command -v fzf >/dev/null 2>&1; then
-  # Homebrew fzf integration
   if [[ -f "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" ]]; then
     source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
   fi
@@ -270,13 +308,13 @@ fi
 # Fuzzy cd
 fcd() {
   local dir
-  dir=$(fd --type d --hidden --exclude .git 2>/dev/null | fzf) && cd "$dir"
+  dir=$(fd --type d --hidden --exclude .git --exclude node_modules 2>/dev/null | fzf) && cd "$dir"
 }
 
 # Fuzzy edit
 fv() {
   local file
-  file=$(fd --type f --hidden --exclude .git 2>/dev/null | fzf) && nvim "$file"
+  file=$(fd --type f --hidden --exclude .git --exclude node_modules 2>/dev/null | fzf) && nvim "$file"
 }
 
 # Fuzzy kill process
@@ -287,7 +325,7 @@ fkill() {
 }
 
 # ─────────────────────────────────────────────────────────────
-# zoxide — smarter cd
+# zoxide
 # ─────────────────────────────────────────────────────────────
 
 if command -v zoxide >/dev/null 2>&1; then
@@ -297,7 +335,7 @@ if command -v zoxide >/dev/null 2>&1; then
 fi
 
 # ─────────────────────────────────────────────────────────────
-# atuin — better history
+# atuin
 # ─────────────────────────────────────────────────────────────
 
 if command -v atuin >/dev/null 2>&1; then
@@ -335,9 +373,10 @@ fi
 # ─────────────────────────────────────────────────────────────
 
 if command -v tmux >/dev/null 2>&1; then
-  alias ta='tmux attach -t'
   alias tn='tmux new -s'
+  alias ta='tmux attach -t'
   alias tl='tmux list-sessions'
+  alias tk='tmux kill-session -t'
 fi
 
 # ─────────────────────────────────────────────────────────────
@@ -354,7 +393,7 @@ if command -v docker >/dev/null 2>&1; then
 fi
 
 # ─────────────────────────────────────────────────────────────
-# Node / JS
+# Node / JS / TS
 # ─────────────────────────────────────────────────────────────
 
 alias ni='npm install'
@@ -398,6 +437,7 @@ if command -v uv >/dev/null 2>&1; then
   alias uvi='uv pip install'
   alias uvv='uv venv'
   alias uvr='uv run'
+  alias uvs='uv sync'
 fi
 
 if command -v pyenv >/dev/null 2>&1; then
@@ -414,11 +454,11 @@ if command -v cargo >/dev/null 2>&1; then
   alias cb='cargo build'
   alias cr='cargo run'
   alias ct='cargo test'
-  alias cc='cargo check'
+  alias ccargo='cargo check'
 fi
 
 # ─────────────────────────────────────────────────────────────
-# Nix fallback
+# Nix
 # ─────────────────────────────────────────────────────────────
 
 if [[ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]]; then
@@ -431,8 +471,10 @@ fi
 
 if [[ -x "/run/current-system/sw/bin/aerospace" ]]; then
   alias aero='/run/current-system/sw/bin/aerospace'
+  alias aeroreload='/run/current-system/sw/bin/aerospace reload-config'
 elif command -v aerospace >/dev/null 2>&1; then
   alias aero='aerospace'
+  alias aeroreload='aerospace reload-config'
 fi
 
 # ─────────────────────────────────────────────────────────────
@@ -477,7 +519,6 @@ cleanup_ds() {
   find . -name ".DS_Store" -type f -delete
 }
 
-# Create project quickly
 project() {
   mkdir -p "$1"
   cd "$1" || return
@@ -487,19 +528,34 @@ project() {
 }
 
 # ─────────────────────────────────────────────────────────────
-# Prompt
+# zsh-autosuggestions
+# ─────────────────────────────────────────────────────────────
+
+if [[ -f "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+elif [[ -f "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#6f9fb8'
+
+# ─────────────────────────────────────────────────────────────
+# Prompt: Starship
 # ─────────────────────────────────────────────────────────────
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 else
-  PROMPT='%F{cyan}%n@%m%f %F{blue}%~%f %# '
+  PROMPT='%F{cyan}%~%f %# '
 fi
 
 # ─────────────────────────────────────────────────────────────
-# Startup message — минимальный, без мусора
+# zsh-syntax-highlighting
+# Должен быть почти самым последним
 # ─────────────────────────────────────────────────────────────
 
-export PATH="$HOME/.local/bin:$PATH"
-
-clear
+if [[ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+elif [[ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
