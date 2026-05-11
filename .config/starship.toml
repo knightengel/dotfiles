@@ -46,12 +46,11 @@ read_only_style = "bold red"
 
 [directory.substitutions]
 "~/dotfiles" = "dotfiles"
-"Documents" = "docs"
-"Downloads" = "down"
-"Desktop" = "desk"
-"Developer" = "dev"
-"Projects" = "projects"
-"dotfiles" = "dotfiles"
+"~/Documents" = "docs"
+"~/Downloads" = "down"
+"~/Desktop" = "desk"
+"~/Developer" = "dev"
+"~/Projects" = "projects"
 ".config" = "config"
 
 [character]

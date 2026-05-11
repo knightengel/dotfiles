@@ -1,0 +1,64 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "bg": "#04131f",
+    "bg_dark": "#020a11",
+    "surface": "#071d2f",
+    "surface2": "#12384f",
+    "border": "#2c92c8",
+    "text": "#d8f4ff",
+    "muted": "#8fb6c9",
+    "subtle": "#4f7890",
+    "sky": "#5cc8ff",
+    "ice": "#9fe7f7",
+    "green": "#79cbbd",
+    "yellow": "#d9cb93",
+    "orange": "#d99a7a",
+    "red": "#d98aa0",
+    "purple": "#b4c5f3",
+    "none": "none"
+  },
+
+  "primary": "sky",
+  "secondary": "ice",
+  "accent": "purple",
+
+  "background": "none",
+  "foreground": "text",
+
+  "selection": {
+    "background": "surface2",
+    "foreground": "text"
+  },
+
+  "border": "border",
+  "separator": "surface2",
+
+  "muted": "muted",
+  "subtle": "subtle",
+
+  "success": "green",
+  "warning": "yellow",
+  "error": "red",
+  "info": "sky",
+
+  "text": "text",
+
+  "diff": {
+    "added": "green",
+    "removed": "red",
+    "changed": "yellow"
+  },
+
+  "syntax": {
+    "comment": "muted",
+    "keyword": "purple",
+    "string": "green",
+    "number": "yellow",
+    "function": "sky",
+    "variable": "text",
+    "type": "ice",
+    "operator": "purple",
+    "constant": "orange"
+  }
+}
