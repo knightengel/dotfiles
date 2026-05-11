@@ -1,0 +1,63 @@
+[user]
+	name = knightengel
+	email = knightoftheniche@icloud.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+	pager = delta
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+	default = current
+
+[fetch]
+	prune = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[diff]
+	colorMoved = default
+
+[delta]
+	navigate = true
+	dark = true
+	side-by-side = false
+	line-numbers = true
+	syntax-theme = TwoDark
+	plus-style = "syntax #12384f"
+	minus-style = "syntax #3a1c2a"
+	plus-emph-style = "syntax #154861"
+	minus-emph-style = "syntax #4a2333"
+	file-style = "bold #5cc8ff"
+	hunk-header-style = "bold #9fe7f7"
+	line-numbers-left-style = "#8fb6c9"
+	line-numbers-right-style = "#8fb6c9"
+	line-numbers-minus-style = "#d98aa0"
+	line-numbers-plus-style = "#79cbbd"
+
+[interactive]
+	diffFilter = delta --color-only
+
+[alias]
+	s = status --short
+	st = status
+	co = checkout
+	cb = checkout -b
+	br = branch
+	cm = commit -m
+	ca = commit --amend
+	aa = add .
+	lg = log --oneline --graph --decorate --all
+	last = log -1 HEAD --stat
+	uncommit = reset --soft HEAD~1
+	unstage = restore --staged
+	discard = restore

@@ -1,0 +1,7 @@
+--theme="TwoDark"
+--style="numbers,changes,header"
+--paging=never
+--italic-text=always
+--decorations=always
+--tabs=2
+--wrap=never
