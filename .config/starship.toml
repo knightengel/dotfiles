@@ -1,6 +1,7 @@
 # ─────────────────────────────────────────────────────────────
-# STARSHIP — ICE GLASS MINIMAL
-# Под прозрачный Ghostty: без плашек, без иконок, без квадратов
+# STARSHIP — ICE GLASS ONE-LINE FULL
+# Left:  ~/project >
+# Right: node/bun/py/rs/go/docker/nix main ?1 took 1s 22:30
 # ─────────────────────────────────────────────────────────────
 
 "$schema" = "https://starship.rs/config-schema.json"
@@ -9,13 +10,12 @@ add_newline = true
 command_timeout = 1200
 palette = "ice"
 
-format = """
-$directory$git_branch$git_status$cmd_duration
-$character"""
+format = "$directory $character"
+right_format = "$nodejs$bun$deno$python$rust$golang$nix_shell$docker_context$git_branch$git_status$cmd_duration$status"
 
-right_format = """
-$nodejs$python$rust$golang$bun$nix_shell$docker_context$status$time
-"""
+# ─────────────────────────────────────────────────────────────
+# Palette
+# ─────────────────────────────────────────────────────────────
 
 [palettes.ice]
 deep = "#04131f"
@@ -29,6 +29,11 @@ yellow = "#d9cb93"
 orange = "#d99a7a"
 red = "#d98aa0"
 purple = "#b4c5f3"
+dim = "#4f7890"
+
+# ─────────────────────────────────────────────────────────────
+# Left side
+# ─────────────────────────────────────────────────────────────
 
 [directory]
 format = "[$path]($style)"
@@ -37,8 +42,10 @@ truncation_length = 4
 truncate_to_repo = false
 home_symbol = "~"
 read_only = " ro"
+read_only_style = "bold red"
 
 [directory.substitutions]
+"~/dotfiles" = "dotfiles"
 "Documents" = "docs"
 "Downloads" = "down"
 "Desktop" = "desk"
@@ -47,16 +54,89 @@ read_only = " ro"
 "dotfiles" = "dotfiles"
 ".config" = "config"
 
+[character]
+success_symbol = "[>](bold sky) "
+error_symbol = "[>](bold red) "
+vimcmd_symbol = "[<](bold yellow) "
+vimcmd_replace_one_symbol = "[<](bold orange) "
+vimcmd_replace_symbol = "[<](bold orange) "
+vimcmd_visual_symbol = "[<](bold purple) "
+
+# ─────────────────────────────────────────────────────────────
+# Languages / runtimes
+# ─────────────────────────────────────────────────────────────
+
+[nodejs]
+disabled = false
+format = "[node:$version](fg:green) "
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+detect_folders = ["node_modules"]
+
+[bun]
+disabled = false
+format = "[bun:$version](fg:yellow) "
+detect_files = ["bun.lock", "bun.lockb"]
+
+[deno]
+disabled = false
+format = "[deno:$version](fg:green) "
+detect_files = ["deno.json", "deno.jsonc"]
+
+[python]
+disabled = false
+format = "[py:$version${virtualenv}](fg:yellow) "
+python_binary = ["python3", "python"]
+detect_files = [
+  "pyproject.toml",
+  "requirements.txt",
+  "setup.py",
+  "Pipfile",
+  "poetry.lock",
+]
+detect_folders = [".venv", "venv"]
+
+[rust]
+disabled = false
+format = "[rs:$version](fg:orange) "
+detect_files = ["Cargo.toml"]
+
+[golang]
+disabled = false
+format = "[go:$version](fg:sky) "
+detect_files = ["go.mod"]
+
+[nix_shell]
+disabled = false
+format = "[nix:$state](fg:ice) "
+
+[docker_context]
+disabled = false
+format = "[docker:$context](fg:blue) "
+detect_files = [
+  "docker-compose.yml",
+  "docker-compose.yaml",
+  "Dockerfile",
+  "compose.yml",
+  "compose.yaml",
+]
+
+# ─────────────────────────────────────────────────────────────
+# Git
+# ─────────────────────────────────────────────────────────────
+
 [git_branch]
-format = " [on](fg:mist) [$branch](bold purple)"
+format = "[$branch](bold purple)"
 style = "bold purple"
+only_attached = true
 
 [git_status]
 format = " [$all_status$ahead_behind](bold red)"
+style = "bold red"
 conflicted = "conflict "
 ahead = "↑${count} "
 behind = "↓${count} "
 diverged = "↕↑${ahead_count}↓${behind_count} "
+up_to_date = ""
 untracked = "?${count} "
 stashed = "stash "
 modified = "!${count} "
@@ -64,55 +144,27 @@ staged = "+${count} "
 renamed = "»${count} "
 deleted = "x${count} "
 
+# ─────────────────────────────────────────────────────────────
+# Command info
+# ─────────────────────────────────────────────────────────────
+
 [cmd_duration]
 min_time = 500
-format = " [took $duration](fg:mist)"
+format = " [took $duration](fg:dim)"
+show_milliseconds = false
 
-[character]
-success_symbol = "[❯](bold sky) "
-error_symbol = "[❯](bold red) "
-vimcmd_symbol = "[❮](bold yellow) "
-vimcmd_replace_one_symbol = "[❮](bold orange) "
-vimcmd_replace_symbol = "[❮](bold orange) "
-vimcmd_visual_symbol = "[❮](bold purple) "
+[status]
+disabled = false
+format = " [exit:$status](fg:red)"
 
 [time]
 disabled = false
 time_format = "%H:%M"
-format = "[$time](fg:mist) "
+format = " [$time](fg:mist)"
 
-[nodejs]
-format = "[node:$version](fg:green) "
-detect_files = ["package.json", ".node-version"]
-detect_folders = ["node_modules"]
-
-[bun]
-format = "[bun:$version](fg:yellow) "
-detect_files = ["bun.lock", "bun.lockb"]
-
-[python]
-format = "[py:$version](fg:yellow) "
-python_binary = ["python3", "python"]
-detect_files = ["pyproject.toml", "requirements.txt", "setup.py", "Pipfile"]
-detect_folders = [".venv", "venv"]
-
-[rust]
-format = "[rs:$version](fg:orange) "
-detect_files = ["Cargo.toml"]
-
-[golang]
-format = "[go:$version](fg:sky) "
-detect_files = ["go.mod"]
-
-[nix_shell]
-format = "[nix:$state](fg:ice) "
-
-[docker_context]
-format = "[docker:$context](fg:blue) "
-
-[status]
-disabled = false
-format = "[exit:$status](fg:red) "
+# ─────────────────────────────────────────────────────────────
+# Disabled noise
+# ─────────────────────────────────────────────────────────────
 
 [os]
 disabled = true
