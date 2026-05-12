@@ -145,7 +145,7 @@ alias reload='source ~/.zshrc'
 
 alias zshrc='nvim ~/.zshrc'
 alias dotzsh='nvim ~/dotfiles/zsh/.zshrc'
-alias ghosttyrc='nvim ~/dotfiles/ghostty/.config/ghostty/config.ghostty'
+alias ghosttyrc='nvim ~/dotfiles/ghostty/.config/ghostty/config'
 alias starshiprc='nvim ~/dotfiles/starship/.config/starship.toml'
 alias nvimrc='nvim ~/dotfiles/nvim/.config/nvim'
 alias aerorc='nvim ~/dotfiles/aerospace/.aerospace.toml'
