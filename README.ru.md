@@ -1,6 +1,6 @@
 <h1 align="center">dotfiles</h1>
 
-<p align="center">Personal macOS dotfiles managed with GNU Stow</p>
+<p align="center">Личный набор конфигов для macOS с установкой через GNU Stow</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/platform-macOS-0f172a?style=for-the-badge&logo=apple" alt="macOS">
@@ -11,12 +11,12 @@
 </p>
 
 <p align="center">
-  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick%20Start-2563eb?style=for-the-badge" alt="Quick Start"></a>
-  <a href="#install"><img src="https://img.shields.io/badge/Install-16a34a?style=for-the-badge" alt="Install"></a>
-  <a href="README.ru.md"><img src="https://img.shields.io/badge/Russian%20Version-README.ru.md-eab308?style=for-the-badge" alt="Russian version"></a>
+  <a href="#быстрый-старт"><img src="https://img.shields.io/badge/Quick%20Start-2563eb?style=for-the-badge" alt="Быстрый старт"></a>
+  <a href="#установка"><img src="https://img.shields.io/badge/Install-16a34a?style=for-the-badge" alt="Установка"></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/English%20Version-README.md-eab308?style=for-the-badge" alt="English version"></a>
 </p>
 
-## Quick Start
+## Быстрый старт
 
 ```bash
 git clone <your-repo-url> ~/dotfiles
@@ -24,7 +24,7 @@ cd ~/dotfiles
 stow -R */
 ```
 
-## Included packages
+## Что внутри
 
 - `zsh` - `~/.zshrc`, `~/.hushlogin`
 - `tmux` - `~/.tmux.conf`
@@ -33,11 +33,11 @@ stow -R */
 - `nvim` - `~/.config/nvim`
 - `ghostty` - `~/.config/ghostty/config`
 - `starship` - `~/.config/starship.toml`
-- `atuin`, `direnv`, `bat`, `btop`, `rg`, `yazi`, `opencode` - matching paths under `~/.config`
+- `atuin`, `direnv`, `bat`, `btop`, `rg`, `yazi`, `opencode` - соответствующие каталоги в `~/.config`
 
-## Stow layout
+## Структура под Stow
 
-Each top-level directory in this repository is a Stow package.
+Каждая папка в корне репозитория - отдельный пакет Stow.
 
 ```text
 dotfiles/
@@ -57,30 +57,30 @@ dotfiles/
   opencode/
 ```
 
-## Requirements
+## Зависимости
 
-Minimum:
+Минимум:
 
 - `git`
 - `stow`
 
-Recommended for this setup:
+Желательно (по этим конфигам):
 
 - `zsh`, `tmux`, `neovim`, `ghostty`, `starship`
 - `eza`, `bat`, `ripgrep`, `fd`, `fzf`, `zoxide`
 - `atuin`, `direnv`, `yazi`, `btop`, `lazygit`
-- `aerospace` (tiling WM for macOS)
+- `aerospace` (tiling WM для macOS)
 
-## Install
+## Установка
 
-1. Clone the repo:
+1. Клонируй репозиторий:
 
 ```bash
 git clone <your-repo-url> ~/dotfiles
 cd ~/dotfiles
 ```
 
-2. Back up existing files (if present):
+2. Сделай бэкап существующих конфигов (если они уже есть):
 
 ```bash
 mkdir -p ~/.dotfiles-backup
@@ -93,19 +93,19 @@ do
 done
 ```
 
-3. Apply packages with Stow:
+3. Применяй пакеты через Stow:
 
 ```bash
 stow zsh tmux git aerospace nvim ghostty starship atuin direnv bat btop rg yazi opencode
 ```
 
-Or restow everything from repo root:
+Или сразу все пакеты из корня:
 
 ```bash
 stow -R */
 ```
 
-## Update after pull
+## Обновление после git pull
 
 ```bash
 cd ~/dotfiles
@@ -113,15 +113,15 @@ git pull
 stow -R */
 ```
 
-## Rollback
+## Быстрый откат
 
 ```bash
 cd ~/dotfiles
 stow -D zsh tmux git aerospace nvim ghostty starship atuin direnv bat btop rg yazi opencode
 ```
 
-## Notes
+## Примечания
 
-- This setup is macOS-focused.
-- Ghostty config expects `JetBrains Mono`.
-- `~/.zshrc` already includes helper aliases for this repo (`stowall`, `stzsh`, `stnvim`, etc.).
+- Конфиги ориентированы на macOS.
+- Для Ghostty в конфиге указан `JetBrains Mono`.
+- В `~/.zshrc` уже есть алиасы для работы с этим репо (`stowall`, `stzsh`, `stnvim` и т.д.).
