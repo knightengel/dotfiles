@@ -19,8 +19,12 @@ window-padding-color = background
 window-vsync = true
 window-save-state = always
 
-# Полностью убираем titlebar / кнопки / подписи окна
-window-decoration = none
+# Округлые углы macOS + скрытая верхняя панель
+window-decoration = auto
+macos-titlebar-style = hidden
+macos-window-buttons = hidden
+macos-titlebar-proxy-icon = hidden
+window-show-tab-bar = never
 
 # Основные цвета — под твои обои
 background = #04131f

@@ -1,0 +1,183 @@
+{
+  "workbench.colorTheme": "Ice Glass",
+  "workbench.iconTheme": "material-icon-theme",
+
+  "window.titleBarStyle": "native",
+  "window.commandCenter": false,
+  "window.customTitleBarVisibility": "never",
+  "window.nativeTabs": false,
+
+  "workbench.layoutControl.enabled": false,
+  "workbench.activityBar.location": "hidden",
+  "workbench.statusBar.visible": true,
+  "workbench.sideBar.location": "left",
+  "workbench.editor.showTabs": "single",
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 16,
+  "workbench.list.smoothScrolling": true,
+
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.renderLineHighlight": "line",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+
+  "editor.fontFamily": "JetBrains Mono, JetBrainsMono Nerd Font, Menlo, Monaco, monospace",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 1.55,
+  "editor.fontLigatures": false,
+  "editor.fontWeight": "500",
+
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "off",
+  "editor.rulers": [100],
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": false,
+  "editor.guides.indentation": true,
+  "editor.renderWhitespace": "selection",
+
+  "terminal.integrated.fontFamily": "JetBrains Mono, JetBrainsMono Nerd Font, monospace",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.lineHeight": 1.25,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.minimumContrastRatio": 1,
+
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 800,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+  "explorer.decorations.badges": false,
+
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.decorations.enabled": true,
+
+  "extensions.ignoreRecommendations": true,
+
+  "security.workspace.trust.enabled": false,
+
+  "telemetry.telemetryLevel": "off",
+
+  "vim.useSystemClipboard": true,
+
+  "workbench.colorCustomizations": {
+    "editor.background": "#04131f",
+    "sideBar.background": "#04131f",
+    "activityBar.background": "#04131f",
+    "panel.background": "#04131f",
+    "terminal.background": "#04131f",
+
+    "editor.foreground": "#d8f4ff",
+    "foreground": "#d8f4ff",
+
+    "editorCursor.foreground": "#84dcff",
+    "editor.lineHighlightBackground": "#071d2f99",
+    "editor.selectionBackground": "#154861",
+    "editor.inactiveSelectionBackground": "#12384f",
+
+    "editorIndentGuide.background1": "#12384f",
+    "editorIndentGuide.activeBackground1": "#5cc8ff",
+
+    "editorLineNumber.foreground": "#385a70",
+    "editorLineNumber.activeForeground": "#9fe7f7",
+
+    "sideBar.border": "#12384f",
+    "panel.border": "#12384f",
+    "editorGroup.border": "#12384f",
+    "window.activeBorder": "#5cc8ff",
+    "window.inactiveBorder": "#12384f",
+
+    "statusBar.background": "#071d2f",
+    "statusBar.foreground": "#d8f4ff",
+    "statusBar.border": "#12384f",
+    "statusBar.debuggingBackground": "#d98aa0",
+    "statusBar.noFolderBackground": "#071d2f",
+
+    "tab.activeBackground": "#071d2f",
+    "tab.inactiveBackground": "#04131f",
+    "tab.activeForeground": "#d8f4ff",
+    "tab.inactiveForeground": "#8fb6c9",
+    "tab.border": "#04131f",
+    "tab.activeBorderTop": "#5cc8ff",
+
+    "list.activeSelectionBackground": "#12384f",
+    "list.activeSelectionForeground": "#eefbff",
+    "list.hoverBackground": "#071d2f",
+    "list.focusOutline": "#5cc8ff",
+
+    "input.background": "#071d2f",
+    "input.foreground": "#d8f4ff",
+    "input.border": "#2c92c8",
+
+    "dropdown.background": "#071d2f",
+    "dropdown.foreground": "#d8f4ff",
+    "dropdown.border": "#2c92c8",
+
+    "quickInput.background": "#04131f",
+    "quickInput.foreground": "#d8f4ff",
+    "quickInputList.focusBackground": "#12384f",
+
+    "terminal.foreground": "#d8f4ff",
+    "terminalCursor.foreground": "#84dcff",
+    "terminal.ansiBlack": "#04111d",
+    "terminal.ansiRed": "#d98aa0",
+    "terminal.ansiGreen": "#79cbbd",
+    "terminal.ansiYellow": "#d9cb93",
+    "terminal.ansiBlue": "#5cc8ff",
+    "terminal.ansiMagenta": "#b4c5f3",
+    "terminal.ansiCyan": "#9fe7f7",
+    "terminal.ansiWhite": "#d3f0fb",
+    "terminal.ansiBrightBlack": "#12384f",
+    "terminal.ansiBrightRed": "#d98aa0",
+    "terminal.ansiBrightGreen": "#9fe0d4",
+    "terminal.ansiBrightYellow": "#ece3b1",
+    "terminal.ansiBrightBlue": "#62bee9",
+    "terminal.ansiBrightMagenta": "#b4c5f3",
+    "terminal.ansiBrightCyan": "#9fe7f7",
+    "terminal.ansiBrightWhite": "#f5fcff"
+
+    "editorGutter.background": "#04131f",
+    "editorLineNumber.foreground": "#4f7890",
+    "editorLineNumber.activeForeground": "#9fe7f7",
+
+
+    "editorGutter.modifiedBackground": "#d9cb93",
+    "editorGutter.addedBackground": "#79cbbd",
+    "editorGutter.deletedBackground": "#d98aa0",
+
+    "sideBar.background": "#04131f",
+    "sideBar.foreground": "#d8f4ff",
+    "sideBar.border": "#12384f",
+
+    "sideBarTitle.foreground": "#9fe7f7",
+    "sideBarSectionHeader.background": "#04131f",
+    "sideBarSectionHeader.foreground": "#d8f4ff",
+    "sideBarSectionHeader.border": "#12384f",
+
+    "list.activeSelectionBackground": "#12384f",
+    "list.inactiveSelectionBackground": "#071d2f",
+    "list.hoverBackground": "#071d2f",
+    "list.focusOutline": "#5cc8ff",
+
+    "tree.indentGuidesStroke": "#2c92c8"
+  },
+  "workbench.editor.tabActionCloseVisibility": false,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "chat.tips.enabled": false
+}
