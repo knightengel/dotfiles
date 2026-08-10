@@ -253,7 +253,11 @@ if.app-id = 'com.apple.TV'
 run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
-if.app-id = 'com.colliderli.iina'
+if.app-id = '^com\.valvesoftware\.steam'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'com.mojang.minecraftlauncher'
 run = 'move-node-to-workspace 7'
 
 # 8 — Productivity
@@ -297,6 +301,10 @@ run = 'move-node-to-workspace 9'
 [[on-window-detected]]
 if.app-id = 'com.apple.AppStore'
 run = ['move-node-to-workspace 9', 'layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.nebula.karing'
+run = 'move-node-to-workspace 9'
 
 # Floating utility windows
 [[on-window-detected]]
