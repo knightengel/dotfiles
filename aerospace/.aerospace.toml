@@ -253,8 +253,13 @@ if.app-id = 'com.apple.TV'
 run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
-if.app-id = '^com\.valvesoftware\.steam'
+if.app-id = 'com.valvesoftware.steam'
 run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'com.valvesoftware.steam.helper'
+run = 'move-node-to-workspace 7'
+
 
 [[on-window-detected]]
 if.app-id = 'com.mojang.minecraftlauncher'
